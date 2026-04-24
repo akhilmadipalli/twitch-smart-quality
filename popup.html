@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Twitch Smart Quality</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hdr">
+        <div class="hdr__mark">
+          <span class="dot" id="statusDot"></span>
+          <span class="hdr__title">SMART QUALITY</span>
+        </div>
+        <label class="toggle" title="Enable / disable">
+          <input type="checkbox" id="enabled" />
+          <span class="toggle__track"><span class="toggle__thumb"></span></span>
+        </label>
+      </header>
+
+      <section class="stats" id="statsPanel">
+        <div class="stat">
+          <span class="stat__label">Buffer</span>
+          <span class="stat__value" id="bufferVal">—</span>
+          <span class="stat__unit">s</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Quality</span>
+          <span class="stat__value stat__value--text" id="qualityVal">—</span>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Healthy</span>
+          <span class="stat__value" id="streakVal">0</span>
+          <span class="stat__unit">s</span>
+        </div>
+      </section>
+
+      <section class="ctrl">
+        <div class="ctrl__row">
+          <label class="ctrl__label" for="panic">
+            Panic threshold
+            <span class="ctrl__hint">Drop to lowest quality</span>
+          </label>
+          <div class="slider">
+            <input type="range" id="panic" min="1" max="10" step="1" />
+            <span class="slider__value" id="panicVal">3s</span>
+          </div>
+        </div>
+
+        <div class="ctrl__row">
+          <label class="ctrl__label" for="low">
+            Step-down threshold
+            <span class="ctrl__hint">Drop one level</span>
+          </label>
+          <div class="slider">
+            <input type="range" id="low" min="3" max="20" step="1" />
+            <span class="slider__value" id="lowVal">8s</span>
+          </div>
+        </div>
+
+        <div class="ctrl__row">
+          <label class="ctrl__label" for="recovery">
+            Recovery threshold
+            <span class="ctrl__hint">Healthy buffer target</span>
+          </label>
+          <div class="slider">
+            <input type="range" id="recovery" min="10" max="40" step="1" />
+            <span class="slider__value" id="recoveryVal">20s</span>
+          </div>
+        </div>
+
+        <div class="ctrl__row">
+          <label class="ctrl__label" for="dwell">
+            Recovery dwell
+            <span class="ctrl__hint">Wait before stepping up</span>
+          </label>
+          <div class="slider">
+            <input type="range" id="dwell" min="5" max="60" step="1" />
+            <span class="slider__value" id="dwellVal">15s</span>
+          </div>
+        </div>
+
+        <div class="ctrl__row ctrl__row--inline">
+          <label class="ctrl__label" for="ceiling">
+            Quality ceiling
+          </label>
+          <select id="ceiling" class="select">
+            <option value="source">Source (no cap)</option>
+            <option value="1080p60">1080p60</option>
+            <option value="1080p">1080p</option>
+            <option value="720p60">720p60</option>
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="360p">360p</option>
+          </select>
+        </div>
+
+        <div class="ctrl__row ctrl__row--inline">
+          <label class="ctrl__label" for="upgrades">
+            Allow step-ups
+            <span class="ctrl__hint">Raise quality when buffer is healthy</span>
+          </label>
+          <label class="toggle toggle--sm">
+            <input type="checkbox" id="upgrades" />
+            <span class="toggle__track"><span class="toggle__thumb"></span></span>
+          </label>
+        </div>
+      </section>
+
+      <footer class="ftr">
+        <button class="btn-reset" id="reset">Reset to defaults</button>
+        <span class="ftr__version">v1.0.0</span>
+      </footer>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

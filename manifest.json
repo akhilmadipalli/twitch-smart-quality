@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Smart Quality",
+  "version": "1.0.0",
+  "description": "A smarter Auto quality mode for Twitch that prioritizes smooth playback over resolution. Drops quality before the stream buffers, not after.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.twitch.tv/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitch.tv/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Twitch Smart Quality",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["*://*.twitch.tv/*"]
+    }
+  ]
+}
