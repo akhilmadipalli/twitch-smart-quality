@@ -25,13 +25,13 @@ Since this isn't on the Chrome Web Store (yet), you install it in developer mode
 
 ### 1. Download the extension
 
-**Option A — Clone the repo:**
+**Option A - Clone the repo:**
 
 ```bash
 git clone https://github.com/akhilmadipalli/twitch-smart-quality.git
 ```
 
-**Option B — Download ZIP:**
+**Option B - Download ZIP:**
 
 On this GitHub page, click the green **Code** button -> **Download ZIP**. Extract it somewhere permanent.
 
